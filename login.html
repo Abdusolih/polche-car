@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PolcheCar login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="modal" class="hidden absolute z-50 w-full h-screen bg-black bg-opacity-45 text-center flex justify-center items-center">
+        <div class="relative size-60 p-5 bg-gray-700 rounded-xl text-white flex justify-center items-center shadow-xl shadow-black">
+            <button id="closeModal" class="absolute top-3 right-3">×</button>
+            <h2>Login va Parolni to'gri kiriting!</h2>
+        </div>
+    </div>
+    <section class="flex flex-col gap-[30px] justify-center items-center h-screen">
+        <div class="flex flex-col justify-center items-center gap-7 shadow-xl shadow-gray-600 py-[20px] px-[20px] rounded-xl">
+            <img src="/foto/logo.png" alt="img">
+            <form class="flex justify-center items-center flex-col gap-[30px]">
+                <label>
+                    Login:
+                <input class="border-black border-[1px] rounded-lg" type="text">
+                </label>
+                <label>
+                    Parol:
+                    <input class="border-black border-[1px] rounded-lg" type="text">
+                </label>
+                <button class="w-[100px] py-[5px] px-[20px] bg-blue-800 text-white rounded-xl hover:bg-blue-700 duration-300 active:bg-blue-500" type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+<script src="/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polche</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <script>
+    tailwind.config = {
+      darkMode: "selector",
+      theme: {
+        container: {
+          center: true,
+        },
+        extend: {
+          colors: {
+            clifford: "#da373d",
+          },
+        },
+      },
+    };
+  </script>
+
+  <body>
+    <div id="preloader" class="flex items-center justify-center h-screen">
+      <div class="relative">
+        <div
+          class="h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-200"
+        ></div>
+        <div
+          class="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin"
+        ></div>
+      </div>
+    </div>
+    <div id="bigg" class="hidden">
+      <header
+        class="px-[20px] py-[30px] fixed top-0 sm:fixed sm:py-[30px] bg-white shadow-xl shadow-gray-500 flex flex-row justify-between w-full dark:bg-blue-950 z-50">
+        <div class="container flex flex-row items-center justify-between">
+          <img src="/foto/logo.png" alt="img" />
+          <ul class="flex-row gap-[30px] hidden lg:flex">
+            <li
+              class="font-medium text-gray-600 hover:text-[#1572D3] duration-300 cursor-pointer dark:text-white"
+            >
+              Become a renter
+            </li>
+            <li
+              class="font-medium text-gray-600 hover:text-[#1572D3] duration-300 cursor-pointer dark:text-white"
+            >
+              Rental deals
+            </li>
+            <li
+              class="font-medium text-gray-600 hover:text-[#1572D3] duration-300 cursor-pointer dark:text-white"
+            >
+              How it work
+            </li>
+            <li
+              class="font-medium text-gray-600 hover:text-[#1572D3] duration-300 cursor-pointer dark:text-white"
+            >
+              Why choose us
+            </li>
+          </ul>
+          <div class="flex flex-row gap-[30px] items-center">
+
+            <button
+              class="py-[10px] px-[25px] rounded-xl bg-blue-400 hover:bg-[#1572D3] cursor-pointer duration-300 hover:scale-110 text-white hidden lg:flex"
+            >
+              Sign Up
+            </button>
+            <button
+              class="py-[10px] px-[25px] rounded-xl bg-blue-400 hover:bg-[#1572D3] cursor-pointer duration-300 hover:scale-110 text-white hidden lg:flex"
+            >
+              Sign In
+            </button>
+            <button
+              id="mode"
+              class="py-[10px] hidden px-[10px] hover: text-black hover:text-white duration-300 cursor-pointer hover:scale-125 rounded-xl dark:text-white active:scale-75 active:duration-300 lg:block"
+            >
+              <img
+                class="w-[30px] dark:hidden"
+                src="https://static-00.iconduck.com/assets.00/moon-icon-2048x2048-707lsx2m.png"
+                alt="icon"
+              />
+              <img
+                class="w-[30px] hidden dark:block"
+                src="https://static-00.iconduck.com/assets.00/sun-icon-2048x2048-ylj2peao.png"
+                alt="img"
+              />
+            </button>
+
+            <div class="relative">
+              <i
+                class="fa-solid fa-bars text-2xl cursor-pointer hidden max-lg:flex dark:text-white"
+                id="burger"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end lg:hidden">
+          <div
+            class="w-[250px] h-[260px] py-[5px] bg-white flex flex-col shadow-md shadow-black absolute justify-center top-[80px] rounded-xl items-end dark:bg-blue-950 dark:shadow-md dark:shadow-white lg:hidden"
+            id="modal"
+          >
+            <div
+              class="flex flex-col items-center px-[60px] gap-[20px] justify-center"
+            >
+              <ul
+                class="flex-col gap-[30px] items-center flex justify-end lg:hidden"
+              >
+                <li
+                  class="font-medium text-gray-600 hover:text-[#1572D3] duration-300 cursor-pointer dark:text-white"
+                >
+                  Become a renter
+                </li>
+                <li
+                  class="font-medium text-gray-600 hover:text-[#1572D3] duration-300 cursor-pointer dark:text-white"
+                >
+                  Rental deals
+                </li>
+                <li
+                  class="font-medium text-gray-600 hover:text-[#1572D3] duration-300 cursor-pointer dark:text-white"
+                >
+                  How it work
+                </li>
+                <li
+                  class="font-medium text-gray-600 hover:text-[#1572D3] duration-300 cursor-pointer dark:text-white"
+                >
+                  Why choose us
+                </li>
+              </ul>
+              <button
+                id="mode2"
+                class="py-[10px] flex px-[10px] hover: text-black hover:text-white duration-300 cursor-pointer hover:scale-125 rounded-xl dark:text-white active:scale-75 active:duration-300 lg:hidden"
+              >
+                <img
+                  class="w-[30px] dark:hidden"
+                  src="https://static-00.iconduck.com/assets.00/moon-icon-2048x2048-707lsx2m.png"
+                  alt="icon"
+                />
+                <img
+                  class="w-[30px] hidden dark:block"
+                  src="https://static-00.iconduck.com/assets.00/sun-icon-2048x2048-ylj2peao.png"
+                  alt="img"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="dark:bg-blue-950">
+        <section
+          class="flex-col text-center px-[20px] lg:container pt-[100px] flex lg:flex-row py-[40px] justify-between lg:pt-[170px]"
+        >
+          <div class="lg:w-[370px] mt-[50px]">
+            <h1 class="font-medium text-5xl dark:text-white">
+              Find, book and rent a car
+              <span class="text-[#1572D3]">Easily</span
+              ><img
+                class="hidden lg:flex ml-[220px]"
+                src="/foto/hero icon.png"
+                alt=""
+              />
+            </h1>
+            <p class="font-semibold dark:text-white">
+              Get a car wherever and whenever you need it with your IOS and
+              Android device.
+            </p>
+            <div class="flex justify-center lg:flex-row gap-[10px] mt-[20px]">
+              <button
+                class="bg-black text-white flex flex-row items-center gap-[10px] py-[2px] px-[20px] rounded-xl hover:scale-90 duration-300"
+              >
+                <img class="w-[30px]" src="/foto/play market.png" alt="img" />
+                <div class="hidden sm:flex flex-col text-start">
+                  <span>Get It On</span>
+                  <h1>Google Play</h1>
+                </div>
+              </button>
+              <button
+                class="bg-black text-white flex flex-row items-center gap-[10px] py-[6px] px-[27px] rounded-xl hover:scale-90 duration-300"
+              >
+                <img class="w-[30px]" src="/foto/apple.png" alt="img" />
+                <h1 class="hidden sm:flex">App Store</h1>
+              </button>
+            </div>
+          </div>
+          <img
+            class="hidden lg:flex w-[700px]"
+            src="/foto/hero car.png"
+            alt="car"
+          />
+        </section>
+        <section
+          class="container px-[20px] py-[30px] sm:py-[50px] flex justify-center dark:bg-blue-950"
+        >
+          <div
+            class="gap-[20px] xl:flex-wrap lg:flex w-[1000px] flex-row text-center justify-between shadow-xl p-[10px] rounded-xl"
+          >
+            <div class="flex flex-row gap-[30px] items-center">
+              <img
+                class="w-[40px] h-[40px]"
+                src="/foto/joylashuv.png"
+                alt="img"
+              />
+              <div>
+                <h1 class="font-bold dark:text-white">Location</h1>
+                <p class="font-semibold text-gray-500 dark:text-white">
+                  Search your location
+                </p>
+              </div>
+            </div>
+            <h1 class="hidden xl:flex text-3xl dark:text-white">|</h1>
+            <div class="flex flex-row gap-[30px] items-center">
+              <img src="/foto/kalendar.png" alt="img" />
+              <div>
+                <h1 class="font-bold dark:text-white">Pickup date</h1>
+                <p class="font-semibold text-gray-500 dark:text-white">
+                  Tue 15 Feb, 09:00
+                </p>
+              </div>
+            </div>
+            <h1 class="hidden xl:flex text-3xl dark:text-white">|</h1>
+            <div class="flex flex-row gap-[30px] items-center">
+              <img src="/foto/kalendar.png" alt="img" />
+              <div>
+                <h1 class="font-bold dark:text-white">Return date</h1>
+                <p class="font-semibold text-gray-500 dark:text-white">
+                  Thu 16 Feb, 11:00
+                </p>
+              </div>
+            </div>
+            <button
+              class="mt-[10px] py-[10px] px-[25px] sm:py-[10px] sm:px-[25px] bg-[#1571d3c2] rounded-xl text-white hover:bg-[#1572D3] duration-300"
+            >
+              Search
+            </button>
+          </div>
+        </section>
+        <section class="container px-[20px] py-[30px]">
+          <div class="flex flex-col items-center justify-center">
+            <button
+              class="bg-[#1572D3] py-[10px] w-[170px] px-[25px] text-white rounded-xl hover:bg-[#1571d356] hover:text-[#1572D3] hover:dark:text-white duration-300 hover:scale-125"
+            >
+              HOW IT WORK
+            </button>
+            <h1
+              class="flex text-center lg:font-bold text-2xl dark:text-white mt-[15px]"
+            >
+              Rent with following 3 working steps
+            </h1>
+          </div>
+          <div
+            class="flex flex-row items-center flex-wrap justify-center gap-[50px] mt-[50px]">
+            <div>
+              <div class="flex flex-col items-center">
+                <img
+                  class="py-[15px] px-[15px] w-[70px] bg-[#ECF5FF] rounded-xl dark:bg-blue-200 hover:scale-110 duration-300 cursor-pointer"
+                  src="/foto/location.png"
+                  alt="img"
+                />
+                <h1 class="font-semibold text-2xl dark:text-white">
+                  Choose location
+                </h1>
+                <div class="lg:w-[170px] text-center mt-[10px] dark:text-white">
+                  <p>Choose your and find your best car</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="flex flex-col items-center">
+                <img
+                  class="py-[15px] px-[15px] w-[70px] bg-[#ECF5FF] rounded-xl dark:bg-blue-200 hover:scale-110 duration-300 cursor-pointer"
+                  src="/foto/calendar.png"
+                  alt="img"
+                />
+                <h1 class="font-semibold text-2xl dark:text-white">
+                  Pick-up date
+                </h1>
+                <div class="lg:w-[270px] text-center mt-[10px] dark:text-white">
+                  <p>Select your pick up date and time to book your car</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="flex flex-col items-center">
+                <img
+                  class="py-[15px] px-[15px] w-[70px] bg-[#ECF5FF] rounded-xl dark:bg-blue-200 hover:scale-110 duration-300 cursor-pointer"
+                  src="/foto/blue car.png"
+                  alt="img"
+                />
+                <h1 class="font-semibold text-2xl dark:text-white">
+                  Book your car
+                </h1>
+                <div class="lg:w-[270px] text-center mt-[10px] dark:text-white">
+                  <p>Book your car and we will deliver it directly to you</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="container lg:flex flex-row justify-between mt-[40px]">
+          <!--marquee -->
+          <marquee class="w-full" direction="left">
+            <div class="flex flex-row gap-[30px]">
+              <img src="/foto/honda.png" alt="brands" />
+              <img src="/foto/jaguar.png" alt="brands" />
+              <img src="/foto/nissan.png" alt="brands" />
+              <img src="/foto/volvo.png" alt="brands" />
+              <img src="/foto/audi.png" alt="brands" />
+              <img src="/foto/honda.png" alt="brands" />
+              <img src="/foto/jaguar.png" alt="brands" />
+              <img src="/foto/nissan.png" alt="brands" />
+              <img src="/foto/volvo.png" alt="brands" />
+              <img src="/foto/audi.png" alt="brands" />
+            </div>
+          </marquee>
+        </section>
+        <section
+          class="container justify-center text-center lg:py-[100px] flex flex-row lg:justify-between"
+        >
+          <img
+            class="hidden lg:flex h-[400px] mt-[60px]"
+            src="/foto/Audi 1.png"
+            alt="Audi"
+          />
+          <div>
+            <div class="lg:w-[440px]">
+              <button
+                class="py-[10px] px-[25px] text-blue-600 bg-[#1571d328] rounded-xl hover:bg-[#1572D3] hover:text-white duration-300 hover:scale-125 dark:text-white"
+              >
+                WHY CHOOSE US
+              </button>
+              <h1 class="font-medium text-3xl mt-[25px] dark:text-white">
+                We offer the best experience with our rental deals
+              </h1>
+            </div>
+            <div class="flex justify-center items-center flex-col">
+              <div
+                class="flex flex-col lg:flex-row items-center gap-[20px] mt-[20px]"
+              >
+                <img
+                  class="py-[10px] px-[10px] bg-[#1571d31f] rounded-xl dark:bg-white hover:scale-110 duration-300 cursor-pointer"
+                  src="/foto/hamyon.png"
+                  alt="hamyon"
+                />
+                <div class="w-[310px]">
+                  <h1 class="font-medium text-xl dark:text-white">
+                    Best price guaranteed
+                  </h1>
+                  <p class="dark:text-white">
+                    Find a lower price? We’ll refund you 100% of the difference.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex flex-col lg:flex-row items-center gap-[20px] mt-[20px]"
+              >
+                <img
+                  class="py-[10px] px-[10px] bg-[#1571d31f] rounded-xl dark:bg-white hover:scale-110 duration-300 cursor-pointer"
+                  src="/foto/blue ucer.png"
+                  alt="hamyon"
+                />
+                <div class="w-[310px]">
+                  <h1 class="font-medium text-xl dark:text-white">
+                    Experience driver
+                  </h1>
+                  <p class="dark:text-white">
+                    Don’t have driver? Don’t worry, we have many experienced
+                    driver for you.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex flex-col lg:flex-row items-center gap-[20px] mt-[20px]"
+              >
+                <img
+                  class="py-[10px] px-[10px] bg-[#1571d31f] rounded-xl dark:bg-white hover:scale-110 duration-300 cursor-pointer"
+                  src="/foto/24-support.png"
+                  alt="hamyon"
+                />
+                <div class="w-[310px]">
+                  <h1 class="font-medium text-xl dark:text-white">
+                    24 hour car delivery
+                  </h1>
+                  <p class="dark:text-white">
+                    Book your car anytime and we will deliver it directly to
+                    you.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex flex-col lg:flex-row items-center gap-[20px] mt-[20px]"
+              >
+                <img
+                  class="py-[10px] px-[10px] bg-[#1571d31f] rounded-xl dark:bg-white hover:scale-110 duration-300 cursor-pointer"
+                  src="/foto/messages2.png"
+                  alt="hamyon"
+                />
+                <div class="w-[310px]">
+                  <h1 class="font-medium text-xl dark:text-white">
+                    24/7 technical support
+                  </h1>
+                  <p class="dark:text-white">
+                    Have a question? Contact Rentcars support any time when you
+                    have problem.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <hr />
+        <section
+          class="container py-[50px] flex items-center gap-[3 0px] flex-col"
+        >
+          <div
+            class="flex flex-col justify-center items-center dark:text-white"
+          >
+            <button
+              class="lg:w-[240px] py-[10px] px-[25px] bg-[#1571d346] text-[#1572D3] rounded-xl hover:bg-[#1572D3] duration-300 hover:text-white hover:scale-125 hover:duration-300 dark:text-white"
+            >
+              POPULAR RENTAL DEALS
+            </button>
+            <h1 class="flex text-center lg:font-semibold text-3xl mt-[20px]">
+              Most popular cars rental deals
+            </h1>
+          </div>
+          <div class="flex flex-col lg:flex-row justify-between mt-[40px]">
+            <div
+              class="w-[310px] flex flex-wrap items-center flex-col scale-75 text-center shadow-xl py-[10px] px-[20px] rounded-xl dark:text-white dark:bg-blue-900 hover:scale-90 duration-300 cursor-pointer"
+            >
+              <img src="/foto/lexus.png" alt="img" />
+              <div>
+                <h1 class="dark:text-white">Jaguar XE L P250</h1>
+                <div
+                  class="flex flex-row gap-[4px] items-center dark:text-white"
+                >
+                  <img src="/foto/yulduz.png" alt="img" />
+                  <span class="font-semibold">4.8</span>
+                  <h1 class="text-gray-600 font-semibold dark:text-white">
+                    (2.436 reviews)
+                  </h1>
+                </div>
+                <div
+                  class="flex flex-row gap-[10px] dark:text-white border-b-[1px] border-gray-600"
+                >
+                  <div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/user.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        4 Passagers
+                      </h1>
+                    </div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/wintaer.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        Air Conditioning
+                      </h1>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/chip.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        Auto
+                      </h1>
+                    </div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/eshik.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        4 Doors
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <h1>Price</h1>
+                  <h1 class="font-bold mt-[10px]">
+                    $1,800
+                    <span class="font-medium text-gray-600 dark:text-white"
+                      >/day</span
+                    >
+                  </h1>
+                </div>
+                <button
+                  class="py-[10px] px-[20px] bg-[#1572D3] text-white rounded-xl mt-[10px]"
+                >
+                  Rent Now ->
+                </button>
+              </div>
+            </div>
+            <div
+              class="w-[310px] flex flex-wrap items-center flex-col scale-75 text-center shadow-xl py-[10px] px-[20px] rounded-xl dark:text-white dark:bg-blue-900 hover:scale-90 duration-300 cursor-pointer"
+            >
+              <img src="/foto/Audi R8.png" alt="img" />
+              <div>
+                <h1 class="dark:text-white">Audi R8</h1>
+                <div
+                  class="flex flex-row gap-[4px] items-center dark:text-white"
+                >
+                  <img src="/foto/yulduz.png" alt="img" />
+                  <span class="font-semibold">4.6</span>
+                  <h1 class="text-gray-600 font-semibold dark:text-white">
+                    (1.936 reviews)
+                  </h1>
+                </div>
+                <div
+                  class="flex flex-row gap-[10px] dark:text-white border-b-[1px] border-gray-600"
+                >
+                  <div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/user.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        2 Passagers
+                      </h1>
+                    </div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/wintaer.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        Air Conditioning
+                      </h1>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/chip.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        Auto
+                      </h1>
+                    </div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/eshik.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        2 Doors
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <h1>Price</h1>
+                  <h1 class="font-bold mt-[10px]">
+                    $2,100
+                    <span class="font-medium text-gray-600 dark:text-white"
+                      >/day</span
+                    >
+                  </h1>
+                </div>
+                <button
+                  class="py-[10px] px-[20px] bg-[#1572D3] text-white rounded-xl mt-[10px]"
+                >
+                  Rent Now ->
+                </button>
+              </div>
+            </div>
+            <div
+              class="w-[310px] flex flex-wrap items-center flex-col scale-75 text-center shadow-xl py-[10px] px-[20px] rounded-xl dark:text-white dark:bg-blue-900 hover:scale-90 duration-300 cursor-pointer"
+            >
+              <img src="/foto/bmw.png" alt="img" />
+              <div>
+                <h1 class="dark:text-white">BMW M3</h1>
+                <div
+                  class="flex flex-row gap-[4px] items-center dark:text-white"
+                >
+                  <img src="/foto/yulduz.png" alt="img" />
+                  <span class="font-semibold">4.5</span>
+                  <h1 class="text-gray-600 font-semibold dark:text-white">
+                    (2.036 reviews)
+                  </h1>
+                </div>
+                <div
+                  class="flex flex-row gap-[10px] dark:text-white border-b-[1px] border-gray-600"
+                >
+                  <div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/user.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        4 Passagers
+                      </h1>
+                    </div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/wintaer.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        Air Conditioning
+                      </h1>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/chip.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        Auto
+                      </h1>
+                    </div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/eshik.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        4 Doors
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <h1>Price</h1>
+                  <h1 class="font-bold mt-[10px]">
+                    $1,600
+                    <span class="font-medium text-gray-600 dark:text-white"
+                      >/day</span
+                    >
+                  </h1>
+                </div>
+                <button
+                  class="py-[10px] px-[20px] bg-[#1572D3] text-white rounded-xl mt-[10px]"
+                >
+                  Rent Now ->
+                </button>
+              </div>
+            </div>
+            <div
+              class="w-[310px] flex flex-wrap items-center flex-col scale-75 text-center shadow-xl py-[10px] px-[20px] rounded-xl dark:text-white dark:bg-blue-900 hover:scale-90 duration-300 cursor-pointer"
+            >
+              <img src="/foto/lambo.png" alt="img" />
+              <div>
+                <h1 class="dark:text-white">Lamborghini Huracan</h1>
+                <div
+                  class="flex flex-row gap-[4px] items-center dark:text-white"
+                >
+                  <img src="/foto/yulduz.png" alt="img" />
+                  <span class="font-semibold">4.3</span>
+                  <h1 class="text-gray-600 font-semibold dark:text-white">
+                    (2.236 reviews)
+                  </h1>
+                </div>
+                <div
+                  class="flex flex-row gap-[10px] dark:text-white border-b-[1px] border-gray-600"
+                >
+                  <div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/user.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        2 Passagers
+                      </h1>
+                    </div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/wintaer.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        Air Conditioning
+                      </h1>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/chip.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        Auto
+                      </h1>
+                    </div>
+                    <div class="flex flex-row items-center gap-[5px]">
+                      <img src="/foto/eshik.png" alt="img" />
+                      <h1 class="font-semibold text-gray-600 dark:text-white">
+                        2 Doors
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <h1>Price</h1>
+                  <h1 class="font-bold mt-[10px]">
+                    $2,300
+                    <span class="font-medium text-gray-600 dark:text-white"
+                      >/day</span
+                    >
+                  </h1>
+                </div>
+                <button
+                  class="py-[10px] px-[20px] bg-[#1572D3] text-white rounded-xl mt-[10px]"
+                >
+                  Rent Now ->
+                </button>
+              </div>
+            </div>
+          </div>
+          <button
+            class="py-[10px] px-[20px] border-[1px] text-black border-black rounded-xl mt-[50px] dark:border-blue-800 dark:text-blue-500 hover:scale-125 cursor-pointer duration-300"
+          >
+            Show all vehicles
+          </button>
+        </section>
+        <hr>
+        <section class="container hidden lg:block py-[50px]">
+          <div class="flex flex-col items-center justify-center mt-[50px]">
+            <button
+              class="hidden lg:block py-[10px] px-[20px] bg-[#1571d341] text-[#1572D3] rounded-xl dark:text-white hover:scale-125 duration-300"
+            >
+              TESTIMONIALS
+            </button>
+            <h1 class="hidden lg:font-bold text-3xl mt-[15px] dark:text-white">
+              What peole say about us?
+            </h1>
+          </div>
+          <!-- <marquee class="w-full" direction="left"> -->
+          <div class="hidden lg:flex flex-row gap-[20px] mt-[50px]">
+            <section
+              class="flex bg-white shadow-2xl w-[720px] h-[300px] rounded-2xl hover:scale-90 duration-300 cursor-pointer">
+              <img src="/foto/man.png" alt="img" />
+              <div class="hidden lg:flex flex-col">
+                <div class="flex flex-col items-center py-[20px] px-[20px]">
+                  <h1 class="text-5xl">
+                    5.0 <span class="text-3xl">stars</span>
+                  </h1>
+                  <div class="flex gap-[5px]">
+                    <img src="/foto/yulduz.png" alt="stars" />
+                    <img src="/foto/yulduz.png" alt="stars" />
+                    <img src="/foto/yulduz.png" alt="stars" />
+                    <img src="/foto/yulduz.png" alt="stars" />
+                    <img src="/foto/yulduz.png" alt="stars" />
+                  </div>
+                </div>
+                <div class="w-[240px] font-semibold text-gray-600 ml-[70px]">
+                  <p class="text-base">
+                    “I feel very secure when using caretall's services. Your
+                    customer care team is very enthusiastic and the driver is
+                    always on time.”
+                  </p>
+                </div>
+                <div class="mt-[30px] ml-[70px]">
+                  <ul>
+                    <li class="font-bold text-lg">Charlie Johnson</li>
+                    <li class="text-sm">From New York, US</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+            <section
+              class="flex bg-white shadow-2xl w-[720px] h-[300px] rounded-2xl hover:scale-90 duration-300 cursor-pointer"
+            >
+              <img class="rounded-l-2xl" src="/foto/woman.jpg" alt="img" />
+              <div class="hidden lg:flex flex-col">
+                <div class="flex flex-col items-center py-[20px] px-[20px]">
+                  <h1 class="text-5xl">
+                    5.0 <span class="text-3xl">stars</span>
+                  </h1>
+                  <div class="flex gap-[5px]">
+                    <img src="/foto/yulduz.png" alt="stars" />
+                    <img src="/foto/yulduz.png" alt="stars" />
+                    <img src="/foto/yulduz.png" alt="stars" />
+                    <img src="/foto/yulduz.png" alt="stars" />
+                    <img src="/foto/yulduz.png" alt="stars" />
+                  </div>
+                </div>
+                <div class="w-[240px] font-semibold text-gray-600 ml-[70px]">
+                  <p class="text-base">
+                    “I have been using your services for 3 years. Your service
+                    is great, I will continue to use your service.”
+                  </p>
+                </div>
+                <div class="mt-[30px] ml-[70px]">
+                  <ul>
+                    <li class="font-bold text-lg">Jenna Vilson</li>
+                    <li class="text-sm">From New York, US</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- </marquee> -->
+        </section>
+        <section
+          class="container hidden lg:flex flex-col lg:flex-row justify-between px-[100px]"
+        >
+          <div class="w-[370px] py-[50px]">
+            <button
+              class="hidden lg:block py-[10px] px-[25px] bg-[#1571d336] text-[#1572D3] rounded-xl hover:scale-125 duration-300 dark:text-white"
+            >
+              DOWLAND
+            </button>
+            <h1
+              class="hidden lg:block font-bold text-4xl mt-[15px] dark:text-white"
+            >
+              Download Rentcars App for
+              <span class="text-[#1572D3]">FREE</span>
+            </h1>
+            <p
+              class="hidden lg:block font-medium text-base text-gray-600 mt-[15px] dark:text-white"
+            >
+              For faster, easier booking and exclusive deals.
+            </p>
+            <div class="hidden lg:flex flex-row gap-[30px] mt-[15px]">
+              <button
+                class="bg-black text-white flex flex-row items-center gap-[10px] py-[2px] px-[20px] rounded-xl hover:scale-90 duration-300"
+              >
+                <img class="w-[30px]" src="/foto/play market.png" alt="img" />
+                <div class="hidden sm:flex flex-col text-start">
+                  <span>Get It On</span>
+                  <h1>Google Play</h1>
+                </div>
+              </button>
+              <button
+                class="bg-black text-white flex flex-row items-center gap-[10px] py-[6px] px-[27px] rounded-xl hover:scale-90 duration-300"
+              >
+                <img class="w-[30px]" src="/foto/apple.png" alt="img" />
+                <h1 class="hidden sm:flex">App Store</h1>
+              </button>
+            </div>
+          </div>
+          <img
+            class="hidden sm:block w-[400px]"
+            src="/foto/iPhone 14 Pro.png"
+            alt="iPhone"
+          />
+        </section>
+      </main>
+      <footer class="bg-blue-950 py-[50px] px-[100px] dark:bg-black">
+        <div
+          class="container flex flex-col text-center lg:flex-row justify-between"
+        >
+          <div
+            class="hidden lg:flex flex-col gap-[30px] items-center w-[370px] text-start"
+          >
+            <img src="/foto/logo white.png" alt="img" />
+            <div
+              class="flex gap-[10px] text-gray-400 w-[240px] h-[37px] hover:scale-125 duration-300 cursor-pointer"
+            >
+              <img src="/foto/joylashuv.png" alt="img" />
+              <h1>25566 Hc 1, Glenallen, Alaska, 99588, USA</h1>
+            </div>
+            <div
+              class="flex gap-[10px] text-gray-400 hover:scale-125 duration-300 cursor-pointer"
+            >
+              <img src="/foto/call.png" alt="img" />
+              <a href="tel:996445947">+603 4784 273 12</a>
+            </div>
+            <div
+              class="flex gap-[10px] text-gray-400 hover:scale-125 duration-300 cursor-pointer"
+            >
+              <img src="/foto/sms.png" alt="img" />
+              <a href="rentcars@gmail.com">rentcars@gmail.com</a>
+            </div>
+          </div>
+          <div class="flex flex-col gap-[10px]">
+            <h1 class="text-white">Our Product</h1>
+            <ul class="text-gray-400">
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Career
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Car
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Packages
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Features
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Priceline
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="text-white">Resources</h1>
+            <ul class="text-gray-400">
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Download
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Help Centre
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Guides
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Partner Network
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Cruises
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Developer
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="text-white">About Rentcars</h1>
+            <ul class="text-gray-400">
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Why choose us
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Our Story
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Investor Relations
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Press Center
+              </li>
+              <li
+                class="hover:text-gray-300 duration-300 cursor-pointer font-semibold hover:scale-125"
+              >
+                Advertise
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="text-white">Follow Us</h1>
+            <div class="flex gap-[10px] mt-[20px]">
+              <a href="https:facebook.com"
+                ><img
+                  class="hover:scale-125 cursor-pointer duration-300"
+                  src="/foto/facebook.png"
+                  alt="img"
+              /></a>
+              <a href="https:instagram.com"
+                ><img
+                  class="hover:scale-125 cursor-pointer duration-300"
+                  src="/foto/instagram.png"
+                  alt="img"
+              /></a>
+              <a href="https:youtube.com"
+                ><img
+                  class="hover:scale-125 cursor-pointer duration-300"
+                  src="/foto/youtube.png"
+                  alt="img"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  <script src="/script.js"></script>
+  </body>
+</html>
