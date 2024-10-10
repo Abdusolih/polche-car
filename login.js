@@ -7,8 +7,8 @@ closeModal.addEventListener("click", () => {
 })
 
 let admin = {
-   name: "1",
-   surname: "2",
+   name: "abdusolih",
+   surname: "xalilov",
 }
 
 form.addEventListener("submit", (e) => {
